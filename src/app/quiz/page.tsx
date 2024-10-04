@@ -1,8 +1,19 @@
+import QuizCreation from "@/components/QuizCreation";
+import { getAuthSession } from "@/lib/nextauth";
+import { redirect } from "next/navigation";
 import React from "react"
 
 type Props = {};
-    const Quiz = (props: Props) => {
-        return <div>Quiz</div>
+
+export const metadata = {
+    title: "Quiz | BTEC ESL AI Quiz",
+}
+    const QuizPage = async (props: Props) => {
+        const session = await getAuthSession();
+        if (!session?.user){
+            return redirect("/");
+        } 
+        return <QuizCreation />;
     };
 
-export default Quiz;
+export default QuizPage;
