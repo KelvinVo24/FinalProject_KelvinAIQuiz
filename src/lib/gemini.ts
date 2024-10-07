@@ -47,9 +47,14 @@ export async function strict_output(
 
     // Use Gemini to get a response
     const geminiModel = genAI.getGenerativeModel({ model: model });
-    
-    const prompt = system_prompt + output_format_prompt + error_msg + "\n\n" + user_prompt.toString();
-    
+
+    const prompt =
+      system_prompt +
+      output_format_prompt +
+      error_msg +
+      "\n\n" +
+      user_prompt.toString();
+
     try {
       const result = await geminiModel.generateContent(prompt);
       const response = await result.response;
@@ -59,7 +64,10 @@ export async function strict_output(
       res = res.replace(/(\w)"(\w)/g, "$1'$2");
 
       if (verbose) {
-        console.log("System prompt:", system_prompt + output_format_prompt + error_msg);
+        console.log(
+          "System prompt:",
+          system_prompt + output_format_prompt + error_msg
+        );
         console.log("\nUser prompt:", user_prompt);
         console.log("\nGemini response:", res);
       }
