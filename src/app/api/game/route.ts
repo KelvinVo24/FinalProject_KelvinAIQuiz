@@ -22,11 +22,6 @@ export async function POST(req: Request, res: Response) {
     }
     const body = await req.json();
     const { amount, topic, type } = quizCreationSchema.parse(body);
-    console.log("Creating game with data:", {
-      type,
-      topic,
-      userId: session.user.id,
-    });
 
     const game = await prisma.game.create({
       data: {
@@ -36,8 +31,7 @@ export async function POST(req: Request, res: Response) {
         topic,
       },
     });
-    console.log("Game created:", game);
-    const { data } = await axios.post(`${process.env.API_URL}/api/questions`, {
+    const { data } = await axios.post(`http://localhost:3000/api/questions`, {
       amount,
       topic,
       type,
@@ -90,7 +84,6 @@ export async function POST(req: Request, res: Response) {
       gameId: game.id,
     });
   } catch (error) {
-    console.error("Error creating game:", error);
     if (error instanceof ZodError) {
       return NextResponse.json({ error: error.issues }, { status: 400 });
     }
