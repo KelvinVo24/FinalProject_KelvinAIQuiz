@@ -22,20 +22,21 @@ export const POST = async (req: Request, res: Response) => {
     let questions: any;
     if (type === "open_ended") {
       questions = await strict_output(
-        "You are a helpful AI that is able to generate a pair of question and answers, the length of each answer should not be more than 15 words, store all the pairs of answers and questions in a JSON array",
+        "You are a helpful AI that generates English grammar fill-in-the-blank questions. The system will hide the verb in the sentence, and the user has to input the missing verb. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
         new Array(amount).fill(
-          `You are gonna to generate some random open-ended questions about ${topic}`
+          `Generate a sentence related to "${topic}" with a verb or grammar-related word hidden. Use '____' to indicate the hidden word.`
         ),
         {
-          question: "question",
-          answer: "answer with max length of 15 words",
+          question:
+            "question with '____' indicating the hidden word and (base form) as hint",
+          answer: "complete sentence with the hidden word revealed",
         }
       );
     } else if (type === "mcq") {
       questions = await strict_output(
-        "You are a helpful AI that is able to generate mcq questions and answers, the length of each answer should not be more than 15 words, store all answers and questions and options in a JSON array",
+        "You are a helpful AI that generates English grammar fill-in-the-blank questions with a given verb form and multiple-choice answers. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
         new Array(amount).fill(
-          `You are gonna to generate some random hard mcq question about ${topic}`
+          `Generate a fill-in-the-blank question focusing on "${topic}" with multiple-choice answers.`
         ),
         {
           question: "question",
