@@ -28,13 +28,18 @@ import { Separator } from "./ui/separator";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import LoadingQuestions from "./LoadingQuestions";
 
-type Props = {};
+type Props = {
+  topicParam: string;
+};
 
 type Input = z.infer<typeof quizCreationSchema>;
 
-function QuizCreation({}: Props) {
+function QuizCreation({ topicParam }: Props) {
   const route = useRouter();
+  const [showLoader, setShowLoader] = React.useState(false);
+  const [finished, setFinished] = React.useState(false);
   const { mutate: getQuestions, isPending } = useMutation({
     mutationFn: async ({ amount, topic, type }: Input) => {
       const response = await axios.post("/api/game", {
@@ -48,13 +53,14 @@ function QuizCreation({}: Props) {
   const form = useForm<Input>({
     resolver: zodResolver(quizCreationSchema),
     defaultValues: {
-      topic: "",
+      topic: topicParam,
       type: "open_ended",
       amount: 3,
     },
   });
 
   function onSubmit(input: Input) {
+    setShowLoader(true);
     getQuestions(
       {
         amount: input.amount,
@@ -63,17 +69,26 @@ function QuizCreation({}: Props) {
       },
       {
         onSuccess: ({ gameId }) => {
-          if (form.getValues("type") === "open_ended") {
-            route.push(`/play/open-ended/${gameId}`);
-          } else {
-            route.push(`/play/mcq/${gameId}`);
-          }
+          setFinished(true);
+          setTimeout(() => {
+            if (form.getValues("type") === "open_ended") {
+              route.push(`/play/open-ended/${gameId}`);
+            } else {
+              route.push(`/play/mcq/${gameId}`);
+            }
+          }, 1000);
+        },
+        onError: () => {
+          setShowLoader(false);
         },
       }
     );
   }
 
   form.watch();
+  if (showLoader) {
+    return <LoadingQuestions finished={finished} />;
+  }
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <Card>

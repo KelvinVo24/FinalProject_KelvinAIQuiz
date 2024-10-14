@@ -142,7 +142,6 @@ const OpenEnded = ({ game }: Props) => {
       </Card>
       <div className="flex flex-col items-center justify-center w-full mt-4">
         <BlankAnswerInput
-          question={currentQuestion.question}
           answer={currentQuestion.answer}
           setBlankAnswer={setBlankAnswers}
         />
