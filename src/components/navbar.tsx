@@ -23,7 +23,7 @@ const Navbar = async (props: Props) => {
         <img
           src="Logo.png" // Replace with the actual path to your image
           alt="Logo Image"
-          className="h-10 w-44 transition duration-300 ease-in-out transform  hover:scale-105 cursor-pointer" // Adjust the size as needed
+          className="h-10 w-40 transition duration-300 ease-in-out transform  hover:scale-105 cursor-pointer" // Adjust the size as needed
         />
 
         <div className="flex items-center">

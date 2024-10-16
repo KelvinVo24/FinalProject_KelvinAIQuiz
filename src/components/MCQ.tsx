@@ -59,7 +59,7 @@ const MCQ = ({ game }: Props) => {
         if (isCorrect) {
           toast({
             title: "Correct!",
-            description: "You are smart",
+            description: "You are smart!",
             variant: "success",
           });
           setCorrectAnswers((prev) => prev + 1);
