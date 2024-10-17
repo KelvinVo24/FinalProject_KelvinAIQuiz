@@ -12,6 +12,11 @@ const loadingTexts = [
   "“I am always ready to learn although I do not always like being taught.” — Winston Churchill",
   "“Live as if you were to die tomorrow. Learn as if you were to live forever.” — Mahatma Gandhi",
   "“The beautiful thing about learning is nobody can take it away from you.” — B.B. King",
+  "“Don't be shy, just try.” — Joe WW",
+  "“If opportunity doesn’t knock, build a door.” — Milton Berle",
+  "“The road to success is always under construction.” — Lily Tomlin",
+  "“Self-belief and hard work will always earn you success.” – Virat Kohli",
+  "“Procrastination is opportunity’s assassin.” – Victor Kiam",
 ];
 const LoadingQuestions = ({ finished }: Props) => {
   const [progress, setProgress] = React.useState(0);
