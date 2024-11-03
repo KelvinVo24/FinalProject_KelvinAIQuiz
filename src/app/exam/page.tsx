@@ -10,6 +10,8 @@ import {
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Timer, ChevronRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import router from "next/router";
+import Link from "next/link";
 
 const questions = [
   // ask 10 questions of english Grammar
@@ -296,6 +298,11 @@ export default function QuestionsPage() {
             Your score: {score} / {questions.length}
             <p>Your level: {rank}</p>
           </p>
+          <Link href="/">
+            <Button variant="default" className="mt-2">
+              Return to home page
+            </Button>
+          </Link>
         </div>
       )}
     </div>
