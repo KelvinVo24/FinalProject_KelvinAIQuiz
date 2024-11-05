@@ -12,23 +12,21 @@ const Blog: React.FC = () => {
         <div className="hover:bg-gray-900 hover:text-white transition duration-300 max-w-sm rounded overflow-hidden shadow-lg">
           <div className="py-4 px-8">
             <img
-              src="https://tailwindcss.com/img/jonathan.jpg"
-              className="rounded-full h-12 w-12 mb-4"
+              src="/Logo_Fanti.jpeg"
+              className="rounded-full h-12 w-12 mb-4 shadow-lg"
             />
-            <a href="#">
+            <a href="/blogs/blog1">
               <h4 className="text-lg mb-3 font-semibold">
-                How to be effective at working remotely?
+                Simple Present Tense: Examples and How to use it
               </h4>
             </a>
             <p className="mb-2 text-sm">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s
+              Verb tenses in English are quite challenging to learn and master.
+              They sometimes confuse language learners. The present tense in
+              English is not an exception. It has its own structure and
+              appropriate use that are usually misused by students.
             </p>
-            <img
-              src="https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-              className="w-100"
-            />
+            <img src="/simple_present.jpg" className="w-100" />
             <hr className="mt-4" />
             <span className="text-xs">ARTICLE</span>
             &nbsp;<span className="text-xs text-gray-500">PROCESS</span>
@@ -38,23 +36,21 @@ const Blog: React.FC = () => {
         <div className="hover:bg-gray-900 hover:text-white transition duration-300 max-w-sm rounded overflow-hidden shadow-lg">
           <div className="py-4 px-8">
             <img
-              src="https://tailwindcss.com/img/jonathan.jpg"
-              className="rounded-full h-12 w-12 mb-4"
+              src="/Logo_Fanti.jpeg"
+              className="rounded-full h-12 w-12 mb-4 shadow-lg"
             />
             <a href="#">
               <h4 className="text-lg mb-3 font-semibold">
-                How to be effective at working remotely?
+                10 Ways To Improve Your Listening Skills (With Examples)
               </h4>
             </a>
             <p className="mb-2 text-sm">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s
+              Strong communication skills are a valued trait in every industry
+              and listening skills are an essential part of effective
+              communication. It can be beneficial to assess and strengthen your
+              listening skills in professional situations and beyond.
             </p>
-            <img
-              src="https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-              className="w-100"
-            />
+            <img src="/listening.png" className="w-100" />
             <hr className="mt-4" />
             <span className="text-xs">ARTICLE</span>
             &nbsp;<span className="text-xs text-gray-500">PROCESS</span>
@@ -64,23 +60,22 @@ const Blog: React.FC = () => {
         <div className="hover:bg-gray-900 hover:text-white transition duration-300 max-w-sm rounded overflow-hidden shadow-lg">
           <div className="py-4 px-8">
             <img
-              src="https://tailwindcss.com/img/jonathan.jpg"
-              className="rounded-full h-12 w-12 mb-4"
+              src="/Logo_Fanti.jpeg"
+              className="rounded-full h-12 w-12 mb-4 shadow-lg"
             />
             <a href="#">
               <h4 className="text-lg mb-3 font-semibold">
-                How to be effective at working remotely?
+                How to learn English quickly: 10 tips
               </h4>
             </a>
             <p className="mb-2 text-sm">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s
+              English is a fun language to learn (here are 10 reasons why it
+              rocks), and even though it’s considered an accessible and
+              relatively easy one to learn, with 750,000 words and spelling that
+              can throw off even the most skilled learner, learning English fast
+              can seem impossible.
             </p>
-            <img
-              src="https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
-              className="w-100"
-            />
+            <img src="/book.png" className="w-100" />
             <hr className="mt-4" />
             <span className="text-xs">ARTICLE</span>
             &nbsp;<span className="text-xs text-gray-500">PROCESS</span>
