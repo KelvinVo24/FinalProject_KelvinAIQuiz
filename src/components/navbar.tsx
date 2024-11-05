@@ -13,7 +13,7 @@ const Navbar = async (props: Props) => {
   console.log(session?.user);
   return (
     <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300 py-2">
-      <div className="flex item-center justify-between h-full gap-2 px-8 mx-auto mx-auto max-w-7xl">
+      <div className="flex item-center justify-between h-full gap-2 px-8 mx-auto max-w-7xl">
         {/* Logo */}
         {/* <Link href="/" className="flex item-center gap-2">
           <p className="rounded-lg border-2 border-b-4 border-r-4 border-black px-2 py-1 text-xl font-bold transition-all hover:-translate-y-[2px] md:block dark:border-white">
@@ -27,8 +27,27 @@ const Navbar = async (props: Props) => {
             className="h-10 w-35 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer"
           />
         </Link>
-
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          <Link href="/quiz">
+            <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+              Quiz Creation
+            </Button>
+          </Link>
+          <Link href="/history">
+            <Button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+              History
+            </Button>
+          </Link>
+          <Link href="/aboutUs">
+            <Button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+              About Us
+            </Button>
+          </Link>
+          <Link href="/recentactivities">
+            <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+              Blog
+            </Button>
+          </Link>
           <Link href="/exam">
             <Button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
               Test English Exam
