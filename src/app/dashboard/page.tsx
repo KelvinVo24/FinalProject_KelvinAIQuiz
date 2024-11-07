@@ -81,7 +81,7 @@ const Dashboard = async (props: Props) => {
       </div> */}
       <div className="text-center py-8">
         <div className="font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-700 dark:from-cyan-400 dark:to-teal-700">
-          Trusted by the most innovative minds in{" "}
+          Powered by the most innovative minds in{" "}
           <span className="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
             <ul className="block animate-text-slide-5 text-left leading-tight [&_li]:block">
               <li>English</li>

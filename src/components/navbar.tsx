@@ -43,7 +43,7 @@ const Navbar = async (props: Props) => {
               About Us
             </Button>
           </Link>
-          <Link href="/recentactivities">
+          <Link href="/Blog">
             <Button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
               Blog
             </Button>

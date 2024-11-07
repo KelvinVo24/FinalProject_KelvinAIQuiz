@@ -1,7 +1,7 @@
 import React from "react";
 import { CardContent, CardTitle } from "./ui/card";
 
-const Blog: React.FC = () => {
+const BlogList: React.FC = () => {
   return (
     <div className="max-w-screen-xl mx-auto p-1">
       <CardTitle className="text-2xl font-bold mb-4 mt-4">Blog Me!</CardTitle>
@@ -86,4 +86,4 @@ const Blog: React.FC = () => {
   );
 };
 
-export default Blog;
+export default BlogList;

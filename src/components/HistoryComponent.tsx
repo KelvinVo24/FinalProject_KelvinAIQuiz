@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import { Clock, CopyCheck, Edit2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import Footer from "./Footer";
 
 type Props = {
   limit: number;

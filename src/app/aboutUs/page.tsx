@@ -37,9 +37,7 @@ const AboutUs: React.FC = () => {
       {/* Services section */}
       <section className="py-10" id="services">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-            Our Services
-          </h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Service card example */}
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -49,7 +47,7 @@ const AboutUs: React.FC = () => {
                 alt="AI Learning"
               />
               <div className="p-6 text-center">
-                <h3 className="text-xl font-medium text-gray-800 mb-2">
+                <h3 className="text-xl font-medium  mb-2">
                   AI-Powered Learning
                 </h3>
                 <p className="text-gray-700 text-base">
@@ -67,10 +65,10 @@ const AboutUs: React.FC = () => {
                 className="h-96 w-full object-cover object-center"
               />
               <div className="p-6 text-center">
-                <h3 className="text-xl font-medium text-gray-800 mb-2">
+                <h3 className="text-xl font-medium mb-2">
                   Interactive Lessons
                 </h3>
-                <p className="text-gray-700 text-base">
+                <p className=" text-base">
                   Engage in interactive lessons that adapt to your learning
                   pace, making the process enjoyable and efficient.
                 </p>
@@ -83,7 +81,7 @@ const AboutUs: React.FC = () => {
                 className="h-96 w-full object-cover object-center"
               />
               <div className="p-6 text-center">
-                <h3 className="text-xl font-medium text-gray-800 mb-2">
+                <h3 className="text-xl font-medium 00 mb-2">
                   Community Support
                 </h3>
                 <p className="text-gray-700 text-base">
@@ -102,9 +100,7 @@ const AboutUs: React.FC = () => {
         <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div className="max-w-lg">
-              <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-                About Us
-              </h2>
+              <h2 className="text-3xl font-bold mb-8 text-center">About Us</h2>
               <p className="mt-4 text-gray-600 text-lg">
                 Fanti English Club, powered by BTEC FPT College, aims to enhance
                 English language learning through innovative AI technologies. We
@@ -127,8 +123,8 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Why Us section */}
-      <section className="text-gray-700 body-font mt-10">
-        <div className="flex justify-center text-3xl font-bold text-gray-800 text-center">
+      <section className="text-gray-7</section>00 body-font mt-10">
+        <div className="flex justify-center text-3xl font-bold text-center">
           Why Choose Us?
         </div>
         <div className="container px-5 py-12 mx-auto">
@@ -136,13 +132,21 @@ const AboutUs: React.FC = () => {
             <div className="p-4 md:w-1/4 sm:w-1/2">
               <div className="px-4 py-6 transform transition duration-500 hover:scale-110">
                 <div className="flex justify-center">
-                  <img
+                  {/* <img
                     src="/images/advanced-technology.png" // Placeholder image path
                     className="w-32 mb-3"
                     alt="Advanced Technology"
-                  />
+                  /> */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-32 mb-3"
+                  >
+                    {" "}
+                    <path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40c-35.3 0-64 28.7-64 64l-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0 0 56-40 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l40 0c0 35.3 28.7 64 64 64l0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40 56 0 0 40c0 13.3 10.7 24 24 24s24-10.7 24-24l0-40c35.3 0 64-28.7 64-64l40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0 0-56 40 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-40 0c0-35.3-28.7-64-64-64l0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40-56 0 0-40zM160 128l192 0c17.7 0 32 14.3 32 32l0 192c0 17.7-14.3 32-32 32l-192 0c-17.7 0-32-14.3-32-32l0-192c0-17.7 14.3-32 32-32zm192 32l-192 0 0 192 192 0 0-192z" />
+                  </svg>
                 </div>
-                <h2 className="title-font font-regular text-2xl text-gray-900">
+                <h2 className="title-font font-regular text-2xl ">
                   Advanced Technology
                 </h2>
               </div>
@@ -151,13 +155,15 @@ const AboutUs: React.FC = () => {
             <div className="p-4 md:w-1/4 sm:w-1/2">
               <div className="px-4 py-6 transform transition duration-500 hover:scale-110">
                 <div className="flex justify-center">
-                  <img
-                    src="/images/flexible-scheduling.png" // Placeholder image path
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
                     className="w-32 mb-3"
-                    alt="Flexible Scheduling"
-                  />
+                  >
+                    <path d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zm64 80l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm128 0l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM64 400l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16z" />
+                  </svg>
                 </div>
-                <h2 className="title-font font-regular text-2xl text-gray-900">
+                <h2 className="title-font font-regular text-2xl ">
                   Flexible Scheduling
                 </h2>
               </div>
@@ -166,13 +172,15 @@ const AboutUs: React.FC = () => {
             <div className="p-4 md:w-1/4 sm:w-1/2">
               <div className="px-4 py-6 transform transition duration-500 hover:scale-110">
                 <div className="flex justify-center">
-                  <img
-                    src="/images/peer-support.png" // Placeholder image path
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
                     className="w-32 mb-3"
-                    alt="Peer Support"
-                  />
+                  >
+                    <path d="M544 248l0 3.3 69.7-69.7c21.9-21.9 21.9-57.3 0-79.2L535.6 24.4c-21.9-21.9-57.3-21.9-79.2 0L416.3 64.5c-2.7-.3-5.5-.5-8.3-.5L296 64c-37.1 0-67.6 28-71.6 64l-.4 0 0 120c0 22.1 17.9 40 40 40s40-17.9 40-40l0-72c0 0 0-.1 0-.1l0-15.9 16 0 136 0c0 0 0 0 .1 0l7.9 0c44.2 0 80 35.8 80 80l0 8zM336 192l0 56c0 39.8-32.2 72-72 72s-72-32.2-72-72l0-118.6c-35.9 6.2-65.8 32.3-76 68.2L99.5 255.2 26.3 328.4c-21.9 21.9-21.9 57.3 0 79.2l78.1 78.1c21.9 21.9 57.3 21.9 79.2 0l37.7-37.7c.9 0 1.8 .1 2.7 .1l160 0c26.5 0 48-21.5 48-48c0-5.6-1-11-2.7-16l2.7 0c26.5 0 48-21.5 48-48c0-12.8-5-24.4-13.2-33c25.7-5 45.1-27.6 45.2-54.8l0-.4c-.1-30.8-25.1-55.8-56-55.8c0 0 0 0 0 0l-120 0z" />
+                  </svg>
                 </div>
-                <h2 className="title-font font-regular text-2xl text-gray-900">
+                <h2 className="title-font font-regular text-2x">
                   Peer Support
                 </h2>
               </div>
@@ -181,11 +189,18 @@ const AboutUs: React.FC = () => {
             <div className="p-4 md:w-1/4 sm:w-1/2">
               <div className="px-4 py-6 transform transition duration-500 hover:scale-110">
                 <div className="flex justify-center">
-                  <img
+                  {/* <img
                     src="/images/certified-instructors.png" // Placeholder image path
                     className="w-32 mb-3"
                     alt="Certified Instructors"
-                  />
+                  /> */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className="w-32 mb-3"
+                  >
+                    <path d="M160 64c0-35.3 28.7-64 64-64L576 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64l-239.2 0c-11.8-25.5-29.9-47.5-52.4-64l99.6 0 0-32c0-17.7 14.3-32 32-32l64 0c17.7 0 32 14.3 32 32l0 32 64 0 0-288L224 64l0 49.1C205.2 102.2 183.3 96 160 96l0-32zm0 64a96 96 0 1 1 0 192 96 96 0 1 1 0-192zM133.3 352l53.3 0C260.3 352 320 411.7 320 485.3c0 14.7-11.9 26.7-26.7 26.7L26.7 512C11.9 512 0 500.1 0 485.3C0 411.7 59.7 352 133.3 352z" />
+                  </svg>
                 </div>
                 <h2 className="title-font font-regular text-2xl text-gray-900">
                   Certified Instructors
@@ -197,16 +212,16 @@ const AboutUs: React.FC = () => {
       </section>
 
       {/* Gallery section */}
-      <section className="text-gray-700 body-font" id="gallery">
+      <section className="body-font" id="gallery">
         <div className="flex justify-center text-3xl font-bold text-gray-800 text-center py-10">
-          Gallery
+          Here Are Some Activites!
         </div>
 
         <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {/* Add your images here */}
           <div className="group relative">
             <img
-              src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+              src="/activity/act1.jpg"
               alt="Gallery Image 1"
               className="aspect-[2/3] h-80 object-cover rounded-lg transition-transform transform group-hover:scale-110"
             />
@@ -214,21 +229,21 @@ const AboutUs: React.FC = () => {
           {/* Repeat for more images */}
           <div className="group relative">
             <img
-              src="https://images.unsplash.com/photo-1556826910-67e7631786f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+              src="/activity/act2.jpg"
               alt="Gallery Image 2"
               className="aspect-[2/3] h-80 object-cover rounded-lg transition-transform transform group-hover:scale-110"
             />
           </div>
           <div className="group relative">
             <img
-              src="https://images.unsplash.com/photo-1605482792341-fd707bf0dc88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw3fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+              src="/activity/act3.jpg"
               alt="Gallery Image 3"
               className="aspect-[2/3] h-80 object-cover rounded-lg transition-transform transform group-hover:scale-110"
             />
           </div>
           <div className="group relative">
             <img
-              src="https://images.unsplash.com/photo-1591161363079-c208eae6b5c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw3fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+              src="/activity/act4.jpg"
               alt="Gallery Image 4"
               className="aspect-[2/3] h-80 object-cover rounded-lg transition-transform transform group-hover:scale-110"
             />
@@ -256,11 +271,11 @@ const AboutUs: React.FC = () => {
                   <div className="border-t border-gray-200 px-6 py-4">
                     <h3 className="text-lg font-bold text-gray-900">Contact</h3>
                     <p className="mt-1 font-bold text-gray-600">
-                      <a href="tel:+123">Phone: +91 123456789</a>
+                      <a href="tel:+935529514">Phone: +935529514</a>
                     </p>
-                    <a className="flex m-1" href="tel:+919823331842">
+                    <a className="flex m-1" href="tel:+935529514">
                       <div className="flex-shrink-0">
-                        <div className="flex items-center justify-between h-10 w-30 rounded-md bg-indigo-500 text-white p-2">
+                        <div className="flex items-center justify-between h-10 w-30 rounded-md bg-blue-500 text-white p-2">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -285,13 +300,13 @@ const AboutUs: React.FC = () => {
                       Our Address
                     </h3>
                     <p className="mt-1 text-gray-600">
-                      Sale galli, 60 foot road, Latur
+                      66 Vo Van Tan Street, Thanh Khe Distruct, Danang City.
                     </p>
                   </div>
                   <div className="border-t border-gray-200 px-6 py-4">
                     <h3 className="text-lg font-medium text-gray-900">Hours</h3>
                     <p className="mt-1 text-gray-600">
-                      Monday - Sunday : 2pm - 9pm
+                      Monday - Sunday : 7am - 5pm
                     </p>
                   </div>
                 </div>

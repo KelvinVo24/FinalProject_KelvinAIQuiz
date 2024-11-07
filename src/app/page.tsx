@@ -49,8 +49,8 @@ export default async function Home() {
               </p>
               <div className="flex items-center space-x-4">
                 <span className="text-lg font-semibold">Powered by:</span>
-                <img src="BTEC_FPT.png" alt="Logo 1" className="w-15 h-12" />
-                <img src="Logo_Fanti.jpeg" alt="Logo 2" className="w-20 h-25" />
+                <img src="BTEC_FPT.png" alt="Logo 1" className="w-15 h-14" />
+                <img src="Logo_Fanti.png" alt="Logo 2" className="w-24 h-27" />
               </div>
               <div className="relative inline-flex  group">
                 <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#ff885d] via-[#00c8fa] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>

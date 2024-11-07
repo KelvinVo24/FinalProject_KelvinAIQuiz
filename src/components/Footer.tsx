@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="px-3 pt-4 lg:px-9  mt-3 rounded-lg shadow-lg transition">
+    <footer className="px-3 pt-4 lg:px-9  mt-3 rounded-lg shadow-lg transition max-w-7xl mx-auto bg-white">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <a href="#" className="inline-flex items-center">
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
               <img src="/BTEC_FPT.png" alt="BTEC Button" className="h-14" />
             </Link>
             <Link href="#" className="w-full min-w-xl">
-              <img src="/Logo_Fanti.jpeg" alt="Fanti Button" className="h-28" />
+              <img src="/Logo_Fanti.png" alt="Fanti Button" className="h-28" />
             </Link>
           </div>
         </div>
