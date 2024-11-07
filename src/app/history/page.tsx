@@ -28,7 +28,7 @@ const HistoryPage = async (props: Props) => {
               className="object-cover"
             />
           </div>
-          <h2 className="text-2xl font-bold mt-2 text-center md:text-left">
+          <h2 className="text-2xl font-bold mt-2 text-center md:text-left text-green-500">
             History of Your Quizzes
           </h2>
           <p className="text-gray-600 mt-2 text-center md:text-left">
@@ -45,7 +45,9 @@ const HistoryPage = async (props: Props) => {
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-2xl font-bold">History</CardTitle>
+                  <CardTitle className="text-2xl font-bold text-green-500">
+                    History
+                  </CardTitle>
                   <Link href="/dashboard" className={buttonVariants()}>
                     <LucideLayoutDashboard className="mr-2" />
                     Back to Dashboard

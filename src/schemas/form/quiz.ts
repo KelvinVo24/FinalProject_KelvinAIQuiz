@@ -4,10 +4,10 @@ export const quizCreationSchema = z.object({
   topic: z
     .string()
     .min(4, {
-      message: "Topic must be at least 4 characters long",
+      message: "You must choose a topic!",
     })
     .max(50, {
-      message: "Topic must be at most 50 characters long",
+      message: "You must choose a topic!",
     }),
   type: z.enum(["mcq", "open_ended"]),
   amount: z.number().min(1).max(50),

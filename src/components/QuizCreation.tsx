@@ -13,7 +13,6 @@ import { quizCreationSchema } from "@/schemas/form/quiz";
 import { z } from "zod";
 import {
   Form,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,7 +22,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { BookOpen, CopyCheck, Route } from "lucide-react";
+import { BookOpen, CopyCheck } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
@@ -56,7 +55,7 @@ function QuizCreation({ topicParam }: Props) {
     resolver: zodResolver(quizCreationSchema),
     defaultValues: {
       topic: topicParam,
-      type: "open_ended",
+      type: "mcq",
       amount: 3,
     },
   });
@@ -100,14 +99,14 @@ function QuizCreation({ topicParam }: Props) {
             <img
               src="/QuizCreation.gif"
               alt="Quiz Image"
-              className="object-cover"
+              className="object-cover rounded-lg shadow-md"
             />
           </div>
-          <h2 className="text-2xl font-bold mt-2 md:text-left">
+          <h2 className="text-3xl font-bold mt-2 text-center md:text-left text-blue-600">
             Quiz Creation
           </h2>
-          <p className="text-gray-600 mt-2 md:text-left">
-            Choose topics and number of question to practice English!
+          <p className="text-gray-600 mt-2 text-center md:text-left">
+            Choose topics and number of questions to practice English!
           </p>
         </div>
 
@@ -115,17 +114,26 @@ function QuizCreation({ topicParam }: Props) {
         <div className="w-1/2 flex justify-center relative md:w-1/2">
           {/* Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl mx-auto w-[55%]"></div>
-          <div className="relative bg-white shadow-lg sm:rounded-3xl ">
+          <div className="relative bg-white shadow-lg sm:rounded-3xl">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl font-bold">Quiz</CardTitle>
-                <CardDescription>Choose a topic</CardDescription>
+                <CardTitle className="text-2xl font-bold text-center text-blue-600">
+                  Quiz
+                </CardTitle>
+                <CardDescription className="text-center">
+                  Choose a topic
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8"
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        form.handleSubmit(onSubmit)();
+                      }
+                    }}
                   >
                     {/* Topic Input */}
                     <FormField
@@ -133,9 +141,46 @@ function QuizCreation({ topicParam }: Props) {
                       name="topic"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Topic</FormLabel>
+                          <FormLabel>Topic</FormLabel> <br />
                           <FormControl>
-                            <Input placeholder="Enter a topic" {...field} />
+                            <select
+                              {...field}
+                              className="form-select rounded-md overflow-hidden shadow-md duration-200 p-1 border border-dimmed text-xs md:text-sm focus:outline-none"
+                            >
+                              <option value="">Select a tense</option>
+                              <option value="Present Simple">
+                                Present Simple
+                              </option>
+                              <option value="Past Simple">Past Simple</option>
+                              <option value="Future Simple">
+                                Future Simple
+                              </option>
+                              <option value="Present Continuous">
+                                Present Continuous
+                              </option>
+                              <option value="Past Continuous">
+                                Past Continuous
+                              </option>
+                              <option value="Future Continuous">
+                                Future Continuous
+                              </option>
+                              <option value="Present Perfect">
+                                Present Perfect
+                              </option>
+                              <option value="Past Perfect">Past Perfect</option>
+                              <option value="Future Perfect">
+                                Future Perfect
+                              </option>
+                              <option value="Present Perfect Continuous">
+                                Present Perfect Continuous
+                              </option>
+                              <option value="Past Perfect Continuous">
+                                Past Perfect Continuous
+                              </option>
+                              <option value="Future Perfect Continuous">
+                                Future Perfect Continuous
+                              </option>
+                            </select>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -151,6 +196,7 @@ function QuizCreation({ topicParam }: Props) {
                           <FormLabel>Number of Questions</FormLabel>
                           <FormControl>
                             <Input
+                              className="rounded-lg"
                               placeholder="Enter an amount"
                               {...field}
                               type="number"
@@ -173,13 +219,12 @@ function QuizCreation({ topicParam }: Props) {
                     <div className="flex justify-between">
                       <Button
                         type="button"
-                        className="w-1/2 rounded-none rounded-l-lg"
-                        onClick={() => form.setValue("type", "mcq")}
-                        variant={
+                        className={`w-1/2 rounded-none rounded-l-lg ${
                           form.getValues("type") === "mcq"
-                            ? "default"
-                            : "secondary"
-                        }
+                            ? "bg-blue-500 text-white hover:bg-blue-600"
+                            : "bg-gray-200 text-black hover:bg-white"
+                        }`}
+                        onClick={() => form.setValue("type", "mcq")}
                       >
                         <CopyCheck className="w-8 h-4 mr-2" /> Multiple Choice
                       </Button>
@@ -188,13 +233,12 @@ function QuizCreation({ topicParam }: Props) {
 
                       <Button
                         type="button"
-                        className="w-1/2 rounded-none rounded-r-lg"
-                        onClick={() => form.setValue("type", "open_ended")}
-                        variant={
+                        className={`w-1/2 rounded-none rounded-r-lg ${
                           form.getValues("type") === "open_ended"
-                            ? "default"
-                            : "secondary"
-                        }
+                            ? "bg-blue-500 text-white hover:bg-blue-600"
+                            : "bg-gray-200 text-black hover:bg-white"
+                        }`}
+                        onClick={() => form.setValue("type", "open_ended")}
                       >
                         <BookOpen className="w-4 h-4 mr-2" /> Open Ended
                       </Button>
@@ -205,7 +249,7 @@ function QuizCreation({ topicParam }: Props) {
                       <Link href="/">
                         <Button
                           variant="secondary"
-                          className="hover:opacity-70 transition duration-300 hover:scale-90"
+                          className="hover:opacity-70 transition duration-300 hover:scale-90 rounded-lg"
                         >
                           Return
                         </Button>
@@ -213,7 +257,7 @@ function QuizCreation({ topicParam }: Props) {
                       <Button
                         disabled={isPending}
                         type="submit"
-                        className="transition duration-300 hover:scale-90"
+                        className="transition duration-300 hover:scale-90 rounded-lg bg-blue-500 text-white hover:bg-blue-600"
                       >
                         Submit
                       </Button>
