@@ -3,7 +3,7 @@ import HistoryComponent from "@/components/HistoryComponent";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAuthSession } from "@/lib/nextauth";
-import { LucideLayoutDashboard } from "lucide-react";
+import { House, LucideLayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -49,8 +49,8 @@ const HistoryPage = async (props: Props) => {
                     History
                   </CardTitle>
                   <Link href="/dashboard" className={buttonVariants()}>
-                    <LucideLayoutDashboard className="mr-2" />
-                    Back to Dashboard
+                    <House className="mr-2" />
+                    Dashboard
                   </Link>
                 </div>
               </CardHeader>

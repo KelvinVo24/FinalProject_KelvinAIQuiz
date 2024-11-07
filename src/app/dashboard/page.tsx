@@ -9,6 +9,7 @@ import RecentActivities from "./RecentActivities";
 import Footer from "@/components/Footer";
 import Blog from "@/components/Blog";
 import Link from "next/link";
+import { House } from "lucide-react";
 
 type Props = {};
 
@@ -95,7 +96,10 @@ const Dashboard = async (props: Props) => {
         </div>
       </div>
       <div className="flex items-center">
-        <h2 className="mr-2 text-3xl font-bold tracking-tight">Dashboard</h2>
+        <h2 className="mr-2 text-3xl font-bold tracking-tight flex justify-center items-center">
+          <House className="mr-2" />
+          Dashboard
+        </h2>
       </div>
       <div className="grid gap-4 mt-4 md:grid-cols-2">
         <QuizMeCard />
