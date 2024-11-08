@@ -3,12 +3,11 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
+} from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -17,55 +16,70 @@ type Props = {
 
 const QuestionList = ({ questions }: Props) => {
   let gameType = questions[0].questionType;
+
   return (
-    <Table className="mt-4">
-      <TableCaption>End of list.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[10px]">No.</TableHead>
-          <TableHead>Question & Correct Answer</TableHead>
-          <TableHead>Your answer</TableHead>
-          {gameType === "open_ended" && (
-            <TableHead className="w-[10px] text-right">Accuracy</TableHead>
-          )}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <>
-          {questions.map((question, index) => {
-            return (
-              <TableRow key={question.id}>
-                <TableCell className="font-medium">{index + 1}</TableCell>
-                <TableCell>
-                  <p>{question.question}</p>
-                  <br />
-                  <br />
-                  <span className="font-semibold">{question.answer}</span>
+    <div className="overflow-x-auto">
+      <Table className="w-full mt-4 border-separate border-spacing-y-4 rounded-lg bg-slate-800 shadow-lg">
+        <TableHeader>
+          <TableRow>
+            <TableHead className="px-4 py-3 font-bold text-left text-white bg-slate-700">
+              No.
+            </TableHead>
+            <TableHead className="px-4 py-3 font-bold text-left text-white bg-slate-700">
+              Question & Correct Answer
+            </TableHead>
+            <TableHead className="px-4 py-3 font-bold text-left text-white bg-slate-700">
+              Your Answer
+            </TableHead>
+            {gameType === "open_ended" && (
+              <TableHead className="px-4 py-3 font-medium text-right text-white bg-slate-700 rounded-tr-lg">
+                Accuracy
+              </TableHead>
+            )}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {questions.map((question, index) => (
+            <TableRow
+              key={question.id}
+              className="transition-colors duration-300 bg-slate-800 hover:bg-slate-700"
+            >
+              <TableCell className="px-4 py-3 font-medium text-white">
+                {index + 1}
+              </TableCell>
+              <TableCell className="px-4 py-3 text-white">
+                <p>{question.question}</p>
+                <div className="mt-2 font-semibold text-slate-400">
+                  Correct answer: {question.answer}
+                </div>
+              </TableCell>
+              {gameType === "mcq" && (
+                <TableCell
+                  className={cn(
+                    "px-4 py-3 font-medium transition-colors duration-300",
+                    question.isCorrect
+                      ? "text-emerald-500 hover:text-emerald-400"
+                      : "text-red-500 hover:text-red-400"
+                  )}
+                >
+                  {question.userAnswer}
                 </TableCell>
-                {gameType === "mcq" && (
-                  <TableCell
-                    className={cn({
-                      "text-green-600": question.isCorrect,
-                      "text-red-600": !question.isCorrect,
-                    })}
-                  >
-                    {question.userAnswer}
-                  </TableCell>
-                )}
-                {gameType === "open_ended" && (
-                  <TableCell>{question.userAnswer}</TableCell>
-                )}
-                {gameType === "open_ended" && (
-                  <TableCell className="text-right">
-                    {question.percenttageCorrect}
-                  </TableCell>
-                )}
-              </TableRow>
-            );
-          })}
-        </>
-      </TableBody>
-    </Table>
+              )}
+              {gameType === "open_ended" && (
+                <TableCell className="px-4 py-3 text-white">
+                  {question.userAnswer}
+                </TableCell>
+              )}
+              {gameType === "open_ended" && (
+                <TableCell className="px-4 py-3 font-medium text-right text-white">
+                  {question.percenttageCorrect}
+                </TableCell>
+              )}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 
