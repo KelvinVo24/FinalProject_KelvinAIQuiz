@@ -48,9 +48,9 @@ const Navbar = async (props: Props) => {
               Blog
             </Button>
           </Link>
-          <Link href="/exam">
+          <Link href="/introETest">
             <Button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-              Test English Exam
+              Test English Level
             </Button>
           </Link>
           <ThemeToggle className="mr-3 ml-3" />
