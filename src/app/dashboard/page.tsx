@@ -95,19 +95,36 @@ const Dashboard = async (props: Props) => {
           </span>
         </div>
       </div>
-      <div className="flex items-center">
-        <h2 className="mr-2 text-3xl font-bold tracking-tight flex justify-center items-center">
-          <House className="mr-2" />
-          Dashboard
-        </h2>
-      </div>
-      <div className="grid gap-4 mt-4 md:grid-cols-2">
-        <QuizMeCard />
-        <HistoryCard />
-      </div>
-      <div className="grid gap-4 mt-4 md:grid-cols-2 lg:grid-cols-7">
-        <HotTopicsCard />
-        <RecentActivities />
+      <div className="min-h-screen p-6 bg-gradient-to-r from-slate-50 to-gray-50 rounded-lg">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center space-x-3 bg-white rounded-lg p-4 shadow-lg ">
+            <div className="p-2 bg-blue-500 rounded-lg">
+              <House className="w-5 h-5 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-800">Dashboard</h2>
+          </div>
+        </div>
+
+        {/* First Row */}
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+            <QuizMeCard />
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+            <HistoryCard />
+          </div>
+        </div>
+
+        {/* Second Row */}
+        <div className="grid gap-6 mt-6 md:grid-cols-2 lg:grid-cols-7">
+          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all lg:col-span-4">
+            <HotTopicsCard />
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all lg:col-span-3">
+            <RecentActivities />
+          </div>
+        </div>
       </div>
       <Blog />
       <Footer />

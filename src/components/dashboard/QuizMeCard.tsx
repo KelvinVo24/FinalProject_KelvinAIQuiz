@@ -1,29 +1,73 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
-import { BrainCircuit } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { BrainCircuit, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-type Props = {}
+const QuizMeCard = () => {
+  const router = useRouter();
 
-const QuizMeCard = (props: Props) => {
-    const router = useRouter();
   return (
-    <Card className='hover:cursor-pointer hover-opacity-75' onClick={() =>{
-        router.push('/quiz');
-    }}>
-        <CardHeader className='flex flex-row items-center justify-between pb-2 space-y-0'>
-    <CardTitle className='text-2xl font-bold'>Quiz Me!</CardTitle>
-    <BrainCircuit size={28} strokeWidth={2.5} />
-        </CardHeader>
-    <CardContent>
-        <p className='text-sm text-muted-foreground'>
-            Test your knowledge with our AI powered quiz
-        </p>
-    </CardContent>
-    </Card>
-  )
-}
+    <Card
+      className="relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] group cursor-pointer bg-gradient-to-br from-blue-50 to-indigo-50"
+      onClick={() => {
+        router.push("/quiz");
+      }}
+    >
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-32 h-32 transform translate-x-16 -translate-y-16 bg-blue-500/10 rounded-full" />
 
-export default QuizMeCard
+      <CardHeader className="relative pb-2">
+        <div className="flex items-center justify-between">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2">
+              <div className="p-2 bg-blue-500 rounded-lg">
+                <BrainCircuit className="w-6 h-6 text-white" strokeWidth={2} />
+              </div>
+              <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Quiz Now!
+              </CardTitle>
+            </div>
+          </div>
+
+          <div className="transform transition-transform duration-300 group-hover:translate-x-2">
+            <ArrowRight className="w-5 h-5 text-blue-500" />
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardContent>
+        <div className="space-y-4">
+          <p className="text-sm text-gray-600">
+            Test your English knowledge with our AI powered quiz
+          </p>
+
+          {/* Stats or features section */}
+          <div className="grid grid-cols-2 gap-4 pt-2">
+            <div className="p-3 bg-white/80 rounded-lg backdrop-blur-sm">
+              <div className="text-xs font-medium text-gray-500">Questions</div>
+              <div className="text-lg font-bold text-blue-600">AI-Powered</div>
+            </div>
+            <div className="p-3 bg-white/80 rounded-lg backdrop-blur-sm">
+              <div className="text-xs font-medium text-gray-500">
+                Difficulty
+              </div>
+              <div className="text-lg font-bold text-blue-600">Adaptive</div>
+            </div>
+          </div>
+
+          {/* Interactive indicator */}
+          <div className="flex items-center text-sm text-blue-600 font-medium">
+            <span className="mr-2">Start Quiz</span>
+            <span className="transform transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default QuizMeCard;
