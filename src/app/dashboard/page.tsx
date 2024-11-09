@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import Blog from "@/components/Blog";
 import Link from "next/link";
 import { House } from "lucide-react";
+import SearchLabel from "@/components/SearchLabel";
 
 type Props = {};
 
@@ -31,21 +32,7 @@ const Dashboard = async (props: Props) => {
         </p>
 
         {/* Search Bar */}
-        <label
-          className="relative bg-white flex flex-col md:flex-row items-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
-          htmlFor="search-bar"
-        >
-          <input
-            id="search-bar"
-            placeholder="What do you want to learn?"
-            className="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white"
-          />
-          <button className="w-full md:w-auto px-6 py-3 bg-black border-black text-white active:scale-95 duration-100 border rounded-xl transition-all disabled:opacity-70">
-            <div className="relative flex items-center justify-center">
-              <span className="text-sm font-semibold">Search</span>
-            </div>
-          </button>
-        </label>
+        <SearchLabel />
       </div>
 
       <div className="relative w-full h-[420px]" id="home">
@@ -57,29 +44,7 @@ const Dashboard = async (props: Props) => {
           />
         </div>
       </div>
-      {/* <div className="mx-auto max-w-7xl flex items-center justify-between gap-4 mb-4">
 
-        <p className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Welcome back, {session.user.name}!
-        </p>
-
-
-        <label
-          className="relative bg-white flex flex-col md:flex-row items-center border py-2 px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
-          htmlFor="search-bar"
-        >
-          <input
-            id="search-bar"
-            placeholder="What do you want to learn?"
-            className="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white"
-          /> */}
-      {/* <button className="w-full md:w-auto px-6 py-3 bg-black border-black text-white active:scale-95 duration-100 border rounded-xl transition-all disabled:opacity-70">
-            <div className="relative flex items-center justify-center">
-              <span className="text-sm font-semibold">Search</span>
-            </div>
-          </button>
-        </label>
-      </div> */}
       <div className="text-center py-8">
         <div className="font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-700 dark:from-cyan-400 dark:to-teal-700">
           Powered by the most innovative minds in{" "}
