@@ -23,7 +23,7 @@ const HistoryComponent = async ({ limit, userId }: Props) => {
     <div className="space-y-8">
       {games.map((game) => (
         <div
-          className="flex items-center justify-between p-4 bg-white shadow-md rounded-lg"
+          className="flex items-center justify-between p-4 bg-white shadow-md rounded-lg hover:scale-105 transition-all duration-300"
           key={game.id}
         >
           <div className="flex items-center">
