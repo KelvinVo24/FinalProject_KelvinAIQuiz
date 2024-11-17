@@ -11,8 +11,26 @@ import {
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import LoadingQuestions from "@/components/LoadingQuestions";
 
 function EnglishTestDescription() {
+  const [showLoader, setShowLoader] = React.useState(false);
+  const [finished, setFinished] = React.useState(false);
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    setShowLoader(true);
+    setTimeout(() => {
+      setFinished(true);
+      router.push("/exam");
+    }, 3000);
+  };
+
+  if (showLoader) {
+    return <LoadingQuestions finished={finished} />;
+  }
+
   return (
     <>
       <div className="container relative flex flex-col justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
@@ -29,24 +47,28 @@ function EnglishTestDescription() {
               your best!
             </p>
           </div>
-          <Button className="px-4 py-4 text-white rounded-lg flex items-center">
-            <Link href="/exam" className="flex items-center">
-              Test now
-              <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                ></path>
-              </svg>
-            </Link>
+          <Button
+            className="px-4 py-4 text-white rounded-lg flex items-center hover:scale-95 duration-300 transition-all"
+            onClick={handleSubmit}
+          >
+            {/* <Link href="/exam" className="flex items-center">
+              Test now */}
+            Test now
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+            {/* </Link> */}
           </Button>
         </div>
         <div className="w-full">
