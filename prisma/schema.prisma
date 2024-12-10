@@ -92,3 +92,4 @@ model Question {
 
   @@index([gameId], name: "gameId")
 }
+

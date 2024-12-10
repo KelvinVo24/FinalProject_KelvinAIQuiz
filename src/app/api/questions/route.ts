@@ -19,12 +19,14 @@ export const POST = async (req: Request, res: Response) => {
     // }
     const body = await req.json();
     const { amount, topic, type } = quizCreationSchema.parse(body);
+    const scoreRank = body.scoreRank || "Fundamentals";
     let questions: any;
+
     if (type === "open_ended") {
       questions = await strict_output(
         "You are a helpful AI that generates English grammar fill-in-the-blank questions. The system will hide the verb in the sentence, and the user has to input the missing verb. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
         new Array(amount).fill(
-          `Generate a sentence related to "${topic}" with a verb or grammar-related word hidden. Use '____' to indicate the hidden word.`
+          `Generate a sentence related to "${topic}" appropriate for ${scoreRank} level of Pearson with a verb or grammar-related word hidden. Use '____' to indicate the hidden word.`
         ),
         {
           question:
@@ -32,11 +34,18 @@ export const POST = async (req: Request, res: Response) => {
           answer: "complete sentence with the hidden word revealed",
         }
       );
+      console.log("Generating questions with:", {
+        amount,
+        topic,
+        type,
+        scoreRank,
+      });
+      console.log("Generated Questions:", questions);
     } else if (type === "mcq") {
       questions = await strict_output(
         "You are a helpful AI that generates English grammar fill-in-the-blank questions with a given verb form and multiple-choice answers. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
         new Array(amount).fill(
-          `Generate a fill-in-the-blank question focusing on "${topic}" with multiple-choice answers.`
+          `Generate a fill-in-the-blank question focusing on "${topic}" appropriate for ${scoreRank} level of Pearson with multiple-choice answers.`
         ),
         {
           question: "question",
@@ -46,7 +55,15 @@ export const POST = async (req: Request, res: Response) => {
           option3: "option3 with max length of 15 words",
         }
       );
+      console.log("Generating questions with:", {
+        amount,
+        topic,
+        type,
+        scoreRank,
+      });
+      console.log("Generated Questions:", questions);
     }
+
     return NextResponse.json(
       {
         questions: questions,

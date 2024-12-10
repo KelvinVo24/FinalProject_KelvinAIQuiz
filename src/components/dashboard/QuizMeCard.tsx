@@ -1,12 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { BrainCircuit, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const QuizMeCard = () => {
+  const [examScoreRank, setExamScoreRank] = React.useState<string | null>(null);
   const router = useRouter();
+  useEffect(() => {
+    // Retrieve the score rank from local storage
+    const storedScoreRank = localStorage.getItem("examScoreRank");
+    if (storedScoreRank) {
+      setExamScoreRank(storedScoreRank);
+    }
+  }, []);
 
   return (
     <Card
@@ -53,7 +61,9 @@ const QuizMeCard = () => {
               <div className="text-xs font-medium text-gray-500">
                 Difficulty
               </div>
-              <div className="text-lg font-bold text-blue-600">Adaptive</div>
+              <div className="text-lg font-bold text-blue-600">
+                {examScoreRank !== null && <span> {examScoreRank}</span>}
+              </div>
             </div>
           </div>
 

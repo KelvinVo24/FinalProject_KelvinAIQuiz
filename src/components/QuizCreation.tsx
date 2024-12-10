@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -41,12 +41,15 @@ function QuizCreation({ topicParam }: Props) {
   const route = useRouter();
   const [showLoader, setShowLoader] = React.useState(false);
   const [finished, setFinished] = React.useState(false);
+  const [examScoreRank, setExamScoreRank] = React.useState<string | null>(null);
   const { mutate: getQuestions, isPending } = useMutation({
     mutationFn: async ({ amount, topic, type }: Input) => {
+      const scoreRank = localStorage.getItem("examScoreRank") || "Fundamentals";
       const response = await axios.post("/api/game", {
         amount,
         topic,
         type,
+        scoreRank,
       });
       return response.data;
     },
@@ -85,6 +88,13 @@ function QuizCreation({ topicParam }: Props) {
       }
     );
   }
+  useEffect(() => {
+    // Retrieve the score rank from local storage
+    const storedScoreRank = localStorage.getItem("examScoreRank");
+    if (storedScoreRank) {
+      setExamScoreRank(storedScoreRank);
+    }
+  }, []);
 
   form.watch();
   if (showLoader) {
@@ -104,6 +114,12 @@ function QuizCreation({ topicParam }: Props) {
           </div>
           <h2 className="text-3xl font-bold mt-2 text-center md:text-left text-blue-600">
             Quiz Creation
+            {examScoreRank !== null && (
+              <span className="text-sm font-medium text-gray-600">
+                {" "}
+                - Last Score: {examScoreRank}
+              </span>
+            )}
           </h2>
           <p className="text-gray-600 mt-2 text-center md:text-left">
             Choose topics and number of questions to practice English!

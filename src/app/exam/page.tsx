@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { differenceInSeconds } from "date-fns";
 import {
   BarChart,
@@ -72,8 +72,8 @@ const questions = [
     question: "Choose the most polite request:",
     options: [
       "I want coffee.",
-      "Give me a coffee.",
-      "Could I have a coffee, please?",
+      "Give me some coffee.",
+      "Could I have some coffee, please?",
       "Coffee now, please.",
     ],
     correct: 2,
@@ -275,7 +275,19 @@ export default function ExamPage() {
     return "Summit 1";
   };
 
+  useEffect(() => {
+    if (hasEnded) {
+      // Store the score rank in local storage
+      const scoreRank = getRank(correctAnswers);
+      localStorage.setItem("examScoreRank", scoreRank);
+    }
+  }, [hasEnded, correctAnswers]);
+
   if (hasEnded) {
+    const userLevel = getRank(correctAnswers);
+    localStorage.setItem("userEnglishLevel", userLevel);
+    const scoreRank = getRank(correctAnswers);
+    localStorage.setItem("examScoreRank", scoreRank);
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-slate-900 to-slate-800">
         <Card className="w-full max-w-md p-8 text-center">
