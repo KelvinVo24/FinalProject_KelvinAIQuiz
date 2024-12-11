@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Game, Question } from "@prisma/client";
 import { differenceInSeconds } from "date-fns";
 import { BarChart, ChevronRight, Loader2, Timer, BookOpen } from "lucide-react";
@@ -22,6 +22,7 @@ const MCQ = ({
 }) => {
   const [questionIndex, setQuestionIndex] = React.useState(0);
   const [selectedChoice, setSelectChoice] = React.useState<number | null>(null);
+  const [examScoreRank, setExamScoreRank] = React.useState<string | null>(null);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
   const [wrongAnswers, setWrongAnswers] = React.useState(0);
   const [hasEnded, setHasEnded] = React.useState(false);
@@ -113,6 +114,13 @@ const MCQ = ({
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [handleNext]);
+  useEffect(() => {
+    // Retrieve the score rank from local storage
+    const storedScoreRank = localStorage.getItem("examScoreRank");
+    if (storedScoreRank) {
+      setExamScoreRank(storedScoreRank);
+    }
+  }, []);
 
   if (hasEnded) {
     return (
@@ -166,8 +174,11 @@ const MCQ = ({
               <span className="px-3 py-1 text-sm font-medium text-white rounded-full bg-slate-700">
                 {game.topic}
               </span>
+              <span className="px-3 py-1 text-sm font-medium text-white rounded-full bg-slate-700">
+                {examScoreRank}
+              </span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-300 rounded-lg bg-slate-700">
+            <div className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white rounded-lg bg-slate-700">
               <Timer className="w-4 h-4" />
               {formatTimeDelta(differenceInSeconds(now, game.timeStarted))}
             </div>

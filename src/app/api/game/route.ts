@@ -21,7 +21,7 @@ export async function POST(req: Request, res: Response) {
       );
     }
     const body = await req.json();
-    const { amount, topic, type } = quizCreationSchema.parse(body);
+    const { amount, topic, type, scoreRank } = quizCreationSchema.parse(body);
 
     const game = await prisma.game.create({
       data: {
@@ -50,6 +50,7 @@ export async function POST(req: Request, res: Response) {
       amount,
       topic,
       type,
+      scoreRank,
     });
     if (type == "mcq") {
       type mcqQuestion = {

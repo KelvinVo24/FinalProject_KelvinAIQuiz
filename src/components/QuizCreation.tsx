@@ -114,12 +114,12 @@ function QuizCreation({ topicParam }: Props) {
           </div>
           <h2 className="text-3xl font-bold mt-2 text-center md:text-left text-blue-600">
             Quiz Creation
-            {examScoreRank !== null && (
+            {/* {examScoreRank !== null && (
               <span className="text-sm font-medium text-gray-600">
                 {" "}
                 - Last Score: {examScoreRank}
               </span>
-            )}
+            )} */}
           </h2>
           <p className="text-gray-600 mt-2 text-center md:text-left">
             Choose topics and number of questions to practice English!

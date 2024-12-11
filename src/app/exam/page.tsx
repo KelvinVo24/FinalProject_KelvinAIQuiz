@@ -284,8 +284,6 @@ export default function ExamPage() {
   }, [hasEnded, correctAnswers]);
 
   if (hasEnded) {
-    const userLevel = getRank(correctAnswers);
-    localStorage.setItem("userEnglishLevel", userLevel);
     const scoreRank = getRank(correctAnswers);
     localStorage.setItem("examScoreRank", scoreRank);
     return (
