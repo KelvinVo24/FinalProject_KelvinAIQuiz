@@ -11,6 +11,7 @@ import Blog from "@/components/Blog";
 import Link from "next/link";
 import { House } from "lucide-react";
 import SearchLabel from "@/components/SearchLabel";
+import PdfChat from "@/components/PdfChat";
 
 type Props = {};
 
@@ -88,6 +89,12 @@ const Dashboard = async (props: Props) => {
           </div>
           <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all lg:col-span-3">
             <RecentActivities />
+          </div>
+        </div>
+
+        <div className="grid gap-6 mt-6">
+          <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all">
+            <PdfChat />
           </div>
         </div>
       </div>

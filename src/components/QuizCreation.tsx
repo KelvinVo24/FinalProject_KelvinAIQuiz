@@ -30,6 +30,7 @@ import { useRouter } from "next/navigation";
 import LoadingQuestions from "./LoadingQuestions";
 import Link from "next/link";
 import Footer from "./Footer";
+import grammarLevels from "./grammarLevels.json";
 
 type Props = {
   topicParam: string;
@@ -42,6 +43,7 @@ function QuizCreation({ topicParam }: Props) {
   const [showLoader, setShowLoader] = React.useState(false);
   const [finished, setFinished] = React.useState(false);
   const [examScoreRank, setExamScoreRank] = React.useState<string | null>(null);
+  const [grammarTopics, setGrammarTopics] = React.useState<string[]>([]);
   const { mutate: getQuestions, isPending } = useMutation({
     mutationFn: async ({ amount, topic, type }: Input) => {
       const scoreRank = localStorage.getItem("examScoreRank") || "Fundamentals";
@@ -89,10 +91,16 @@ function QuizCreation({ topicParam }: Props) {
     );
   }
   useEffect(() => {
-    // Retrieve the score rank from local storage
     const storedScoreRank = localStorage.getItem("examScoreRank");
-    if (storedScoreRank) {
-      setExamScoreRank(storedScoreRank);
+    setExamScoreRank(storedScoreRank || "Fundamentals");
+
+    // Match the topics based on the rank
+    const matchedLevel = grammarLevels.find(
+      (level) => level.level === (storedScoreRank || "Fundamentals")
+    );
+
+    if (matchedLevel) {
+      setGrammarTopics(matchedLevel.topics);
     }
   }, []);
 
@@ -161,10 +169,10 @@ function QuizCreation({ topicParam }: Props) {
                           <FormControl>
                             <select
                               {...field}
-                              className="form-select rounded-md overflow-hidden shadow-md duration-200 p-1 border border-dimmed text-xs md:text-sm focus:outline-none"
+                              className="form-select rounded-md overflow-hidden shadow-md duration-200 p-1 border border-dimmed text-xs md:text-sm focus:outline-none max-w-xs"
                             >
-                              <option value="">Select a tense</option>
-                              <option value="Present Simple">
+                              {/* <option value="">Select a tense</option> */}
+                              {/* <option value="Present Simple">
                                 Present Simple
                               </option>
                               <option value="Past Simple">Past Simple</option>
@@ -195,7 +203,13 @@ function QuizCreation({ topicParam }: Props) {
                               </option>
                               <option value="Future Perfect Continuous">
                                 Future Perfect Continuous
-                              </option>
+                              </option> */}
+                              <option value="">Select a topic</option>
+                              {grammarTopics.map((topic, index) => (
+                                <option key={index} value={topic}>
+                                  {topic}
+                                </option>
+                              ))}
                             </select>
                           </FormControl>
                           <FormMessage />
