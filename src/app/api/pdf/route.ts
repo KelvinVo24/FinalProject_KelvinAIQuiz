@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { GenerativeModel } from "@google/generative-ai";
 import pdfParse from "pdf-parse";
 import _ from "lodash";
+import fs from "fs";
+import path from "path";
 
 // Initialize Gemini model
 const genai = new GenerativeModel(process.env.GEMINI_API_KEY || "", {
@@ -27,27 +29,22 @@ export async function POST(req: Request) {
   }
 
   try {
-    // Parse the incoming form data
-    const formData = await req.formData();
-
-    // Get the file and question from form data
-    const file = formData.get("pdf") as File | null;
-    const question = formData.get("question") as string | null;
+    const { question, pdfFileName } = await req.json();
 
     // Validate inputs
-    if (!file || !question) {
+    if (!question || !pdfFileName) {
       return NextResponse.json(
-        { error: "Missing file or question" },
+        { error: "Missing question or PDF file name" },
         { status: 400 }
       );
     }
 
-    // Convert File to ArrayBuffer then to Buffer
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    // Read PDF from public folder
+    const pdfPath = path.join(process.cwd(), "public", "books", pdfFileName);
+    const pdfBuffer = fs.readFileSync(pdfPath);
 
     // Parse PDF
-    const pdfData = await pdfParse(buffer);
+    const pdfData = await pdfParse(pdfBuffer);
     const text = pdfData.text;
 
     // Generate the prompt

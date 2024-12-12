@@ -24,7 +24,7 @@ export const POST = async (req: Request, res: Response) => {
 
     if (type === "open_ended") {
       questions = await strict_output(
-        "You are a helpful AI that generates English grammar fill-in-the-blank questions. The system will hide the verb in the sentence, and the user has to input the missing verb. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
+        "You are a helpful AI that generates English grammar fill-in-the-blank questions. The system will hide the word in the sentence, and the user has to input the missing verb. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
         new Array(amount).fill(
           `Generate a sentence related to "${topic}" appropriate for ${scoreRank} level of Pearson with a verb or grammar-related word hidden. Use '____' to indicate the hidden word.`
         ),
@@ -43,7 +43,7 @@ export const POST = async (req: Request, res: Response) => {
       console.log("Generated Questions:", questions);
     } else if (type === "mcq") {
       questions = await strict_output(
-        "You are a helpful AI that generates English grammar fill-in-the-blank questions with a given verb form and multiple-choice answers. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
+        "You are a helpful AI that generates English grammar fill-in-the-blank questions and multiple-choice answers. Each answer should not be more than 15 words. Store all pairs in a JSON array.",
         new Array(amount).fill(
           `Generate a fill-in-the-blank question focusing on "${topic}" appropriate for ${scoreRank} level of Pearson with multiple-choice answers.`
         ),

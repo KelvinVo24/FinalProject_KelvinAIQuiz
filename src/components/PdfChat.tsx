@@ -1,11 +1,18 @@
 // src/components/PdfChat.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { FileUp, Send } from "lucide-react";
+import { Send } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 interface ChatResponse {
   response?: string;
@@ -14,23 +21,28 @@ interface ChatResponse {
 }
 
 const PdfChat = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedPdf, setSelectedPdf] = useState<string>("");
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setSelectedFile(file);
-    setError("");
-  };
+  // This is where you list your PDF files
+  const pdfFiles = [
+    { fileName: "TopNotch1_Vocabulary.pdf", displayName: "Top Notch 1" },
+    {
+      fileName: "TopNotch1_Vocabulary_2.pdf",
+      displayName: "Top Notch 1 (Advanced)",
+    },
+    { fileName: "TopNotch2_Vocabulary.pdf", displayName: "Top Notch 2" },
+    { fileName: "TopNotch3_Vocabulary.pdf", displayName: "Top Notch 3" },
+    { fileName: "Summit1_Vocabulary.pdf", displayName: "Summit 1" },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedFile || !question) {
-      setError("Please provide both a PDF file and a question.");
+    if (!selectedPdf || !question) {
+      setError("Please select a PDF file and enter a question.");
       return;
     }
 
@@ -39,19 +51,16 @@ const PdfChat = () => {
     setAnswer("");
 
     try {
-      const formData = new FormData();
-      formData.append("pdf", selectedFile);
-      formData.append("question", question);
-
       const response = await fetch("/api/pdf", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question,
+          pdfFileName: selectedPdf,
+        }),
       });
-
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Server returned an invalid response format");
-      }
 
       const data: ChatResponse = await response.json();
 
@@ -77,25 +86,23 @@ const PdfChat = () => {
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardHeader>
-        <CardTitle>Chat with PDF</CardTitle>
+        <CardTitle>Vocabulary - AI Chatbot Assistant</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div className="flex items-center gap-4">
-            <Input
-              type="file"
-              accept=".pdf"
-              onChange={handleFileUpload}
-              className="hidden"
-              id="pdf-upload"
-            />
-            <label
-              htmlFor="pdf-upload"
-              className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600"
-            >
-              <FileUp className="w-5 h-5" />
-              {selectedFile ? selectedFile.name : "Upload PDF"}
-            </label>
+            <Select value={selectedPdf} onValueChange={setSelectedPdf}>
+              <SelectTrigger className="w-[300px]">
+                <SelectValue placeholder="Select Pearson Level" />
+              </SelectTrigger>
+              <SelectContent>
+                {pdfFiles.map((pdf) => (
+                  <SelectItem key={pdf.fileName} value={pdf.fileName}>
+                    {pdf.displayName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <form onSubmit={handleSubmit} className="flex gap-2">
@@ -105,7 +112,7 @@ const PdfChat = () => {
               placeholder="Ask a question about the PDF..."
               className="flex-1"
             />
-            <Button type="submit" disabled={isLoading || !selectedFile}>
+            <Button type="submit" disabled={isLoading || !selectedPdf}>
               {isLoading ? "Loading..." : <Send className="w-5 h-5" />}
             </Button>
           </form>

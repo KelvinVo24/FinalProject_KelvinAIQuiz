@@ -43,7 +43,7 @@ const AboutUs: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
                 className="h-96 w-full object-cover object-center"
-                src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/442493316_122195811638065171_7346494693987857937_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wjmFK8S7x5MQ7kNvgHv0xaQ&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=Ayrp1Y5dtVf40r8eMMU9oSy&oh=00_AYCYRqpg2DjYQaPsq1LhnCsOsmYKXe5U4K5b1PNUdC2sKg&oe=67303AAA" // Placeholder image path
+                src="/activity/act7.jpg" // Placeholder image path
                 alt="AI Learning"
               />
               <div className="p-6 text-center">
@@ -60,7 +60,7 @@ const AboutUs: React.FC = () => {
             {/* Repeat service cards as needed */}
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/462564623_122252406164065171_6834329963117128133_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-VsIn5eUsWYQ7kNvgHwKUa6&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=AFjij6xMxuCsS7XH-CPtLmu&oh=00_AYCGGG5iMreuS3N_DPiRzIeZjpT4RrTkhRkkwvqVuajr-Q&oe=67305136" // Placeholder image path
+                src="/activity/act6.jpg" // Placeholder image path
                 alt="Interactive Lessons"
                 className="h-96 w-full object-cover object-center"
               />
@@ -76,7 +76,7 @@ const AboutUs: React.FC = () => {
             </div>
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/464587854_122257467908065171_7686997290798538820_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=md6xM2_dQKcQ7kNvgH102E5&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=ApiaRIFfdjbEdN-5msNLeT-&oh=00_AYA_RRp-Grpk-nmCA2rk-0xZWq2NiFz6KWdAjz3_0YoYAw&oe=67303D94" // Placeholder image path
+                src="/activity/act5.jpg" // Placeholder image path
                 alt="Community Support"
                 className="h-96 w-full object-cover object-center"
               />
@@ -101,7 +101,7 @@ const AboutUs: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             <div className="max-w-lg">
               <h2 className="text-3xl font-bold mb-8 text-center">About Us</h2>
-              <p className="mt-4 text-gray-600 text-lg">
+              <p className="mt-4 text-gray-600 text-lg text-center">
                 Fanti English Club, powered by BTEC FPT College, aims to enhance
                 English language learning through innovative AI technologies. We
                 offer tailored courses, community support, and interactive
@@ -113,7 +113,7 @@ const AboutUs: React.FC = () => {
             </div>
             <div className="mt-12 md:mt-0">
               <img
-                src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/464695051_122258084342065171_3246204300999251184_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=c-Zio3X0kGYQ7kNvgGrzrQo&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=A4Kqx6wjd7a8tJz0uAwxzEi&oh=00_AYCozFoGIGRyZLPkaGxs-RmFl_pqgYpND1kGWBfBG6xwIQ&oe=673025B1"
+                src="/activity/act8.jpg" // Placeholder image path
                 alt="About Us Image"
                 className="object-cover rounded-lg shadow-md"
               />
