@@ -7,44 +7,68 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { FileUp, Send } from "lucide-react";
 
+interface ChatResponse {
+  response?: string;
+  tokenCount?: string;
+  error?: string;
+}
+
 const PdfChat = () => {
-  const [pdfContent, setPdfContent] = useState<string>("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    try {
-      const formData = new FormData();
-      formData.append("pdf", file);
-
-      // Read PDF content as text
-      const text = await file.text();
-      setPdfContent(text);
-    } catch (error) {
-      console.error("Error reading PDF:", error);
-    }
+    setSelectedFile(file);
+    setError("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!pdfContent || !question) return;
+    if (!selectedFile || !question) {
+      setError("Please provide both a PDF file and a question.");
+      return;
+    }
 
     setIsLoading(true);
+    setError("");
+    setAnswer("");
+
     try {
+      const formData = new FormData();
+      formData.append("pdf", selectedFile);
+      formData.append("question", question);
+
       const response = await fetch("/api/pdf", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pdfContent, question }),
+        body: formData,
       });
 
-      const data = await response.json();
-      setAnswer(data.answer);
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Server returned an invalid response format");
+      }
+
+      const data: ChatResponse = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to process request");
+      }
+
+      if (data.response) {
+        setAnswer(data.response);
+      } else {
+        throw new Error("No response received from server");
+      }
     } catch (error) {
       console.error("Error:", error);
+      setError(
+        error instanceof Error ? error.message : "Failed to process request"
+      );
     } finally {
       setIsLoading(false);
     }
@@ -70,7 +94,7 @@ const PdfChat = () => {
               className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-600"
             >
               <FileUp className="w-5 h-5" />
-              Upload PDF
+              {selectedFile ? selectedFile.name : "Upload PDF"}
             </label>
           </div>
 
@@ -81,14 +105,20 @@ const PdfChat = () => {
               placeholder="Ask a question about the PDF..."
               className="flex-1"
             />
-            <Button type="submit" disabled={isLoading || !pdfContent}>
-              <Send className="w-5 h-5" />
+            <Button type="submit" disabled={isLoading || !selectedFile}>
+              {isLoading ? "Loading..." : <Send className="w-5 h-5" />}
             </Button>
           </form>
 
+          {error && (
+            <div className="p-4 bg-red-100 text-red-700 rounded-lg">
+              {error}
+            </div>
+          )}
+
           {answer && (
-            <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-              <p className="text-gray-800">{answer}</p>
+            <div className="p-4 bg-gray-100 rounded-lg">
+              <p className="text-gray-800 whitespace-pre-wrap">{answer}</p>
             </div>
           )}
         </div>

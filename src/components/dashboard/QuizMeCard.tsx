@@ -62,7 +62,11 @@ const QuizMeCard = () => {
                 Difficulty
               </div>
               <div className="text-lg font-bold text-blue-600">
-                {examScoreRank !== null && <span> {examScoreRank}</span>}
+                {examScoreRank !== null ? (
+                  <span>{examScoreRank}</span>
+                ) : (
+                  <span>Adaptive</span>
+                )}
               </div>
             </div>
           </div>
