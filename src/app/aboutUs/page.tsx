@@ -1,9 +1,29 @@
 "use client";
 
 import Footer from "@/components/Footer";
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import React from "react";
+import { useState } from "react";
 
 const AboutUs: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 200); // Simulate a loading time of 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
   return (
     <>
       {/* Nav bar section */}

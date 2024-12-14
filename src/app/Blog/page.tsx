@@ -16,7 +16,7 @@ const categories = [
         category: "Article",
         imageUrl:
           "https://images.unsplash.com/photo-1496128858413-b36217c2ce36",
-        author: "John Doe",
+        author: "Vo Van Thanh Binh",
         date: "Mar 16, 2020",
         readTime: "6 min read",
         authorImage: "/Logo_Fanti.jpeg",
@@ -25,31 +25,31 @@ const categories = [
       },
 
       {
-        title: "Mastering Grammar Basics",
+        title: "Punctuation: Mastering the Comma",
         slug: "simple-present-tense",
         category: "Article",
         imageUrl:
-          "https://images.unsplash.com/photo-1496128858413-b36217c2ce36",
-        author: "John Doe",
+          "https://images.unsplash.com/photo-1517849325426-6eac321919a0",
+        author: "Vo Van Thanh Binh",
         date: "Mar 16, 2020",
         readTime: "6 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Discover the foundational rules and tips for mastering English grammar.",
+          "The humble comma - it might seem small, but it plays a big role in sentence clarity!",
       },
 
       {
-        title: "Mastering Grammar Basics",
+        title: "Conquering Subject-Verb Agreement",
         slug: "simple-present-tense",
         category: "Article",
         imageUrl:
-          "https://images.unsplash.com/photo-1496128858413-b36217c2ce36",
-        author: "John Doe",
+          "https://images.unsplash.com/photo-1649789186790-7cbd3620b2f8",
+        author: "Vo Van Thanh Binh",
         date: "Mar 16, 2020",
         readTime: "6 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Discover the foundational rules and tips for mastering English grammar.",
+          "Ever get tripped up by `she goes` vs `they go`? Fear not! This guide dives into subject-verb agreement.",
       },
       // Add more grammar posts here
     ],
@@ -64,7 +64,7 @@ const categories = [
         slug: "improve-listening-skills",
         category: "Video",
         imageUrl: "https://images.unsplash.com/photo-1547586696-ea22b4d4235d",
-        author: "Jane Smith",
+        author: "Vo Van Thanh Binh",
         date: "Mar 10, 2020",
         readTime: "4 min read",
         authorImage: "/Logo_Fanti.jpeg",
@@ -73,29 +73,30 @@ const categories = [
       },
 
       {
-        title: "How to Improve Your Listening Skills",
+        title: "Active Listening: Beyond Just Hearing",
         slug: "improve-listening-skills",
         category: "Video",
-        imageUrl: "https://images.unsplash.com/photo-1547586696-ea22b4d4235d",
-        author: "Jane Smith",
+        imageUrl:
+          "https://images.unsplash.com/photo-1525825691042-e14d9042fc70",
+        author: "Vo Van Thanh Binh",
         date: "Mar 10, 2020",
         readTime: "4 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Practical strategies and exercises to enhance your English listening abilities.",
+          "This guide explores techniques for active listening, like maintaining eye contact, summarizing key points, and asking clarifying questions.",
       },
 
       {
-        title: "How to Improve Your Listening Skills",
+        title: "Level Up Your Listening: Resources for All Skills",
         slug: "improve-listening-skills",
         category: "Video",
-        imageUrl: "https://images.unsplash.com/photo-1547586696-ea22b4d4235d",
-        author: "Jane Smith",
+        imageUrl: "https://images.unsplash.com/photo-1563120145-ecb346208872",
+        author: "Vo Van Thanh Binh",
         date: "Mar 10, 2020",
         readTime: "4 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Practical strategies and exercises to enhance your English listening abilities.",
+          "Struggling to understand accents or complex topics? No problem! This guide provides a variety of listening resources to cater to all skill levels.",
       },
       // Add more listening posts here
     ],
@@ -109,8 +110,8 @@ const categories = [
         slug: "mastering-grammar-basics",
         category: "Case Study",
         imageUrl:
-          "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-        author: "Sam Green",
+          "https://images.unsplash.com/photo-1475721027785-f74eccf877e2",
+        author: "Vo Van Thanh Binh",
         date: "Feb 12, 2020",
         readTime: "11 min read",
         authorImage: "/Logo_Fanti.jpeg",
@@ -119,31 +120,29 @@ const categories = [
       },
 
       {
-        title: "Speaking Confidently",
+        title: "Craft Your Pronunciation: Mastering Sounds for Clear Speech",
         slug: "mastering-grammar-basics",
         category: "Case Study",
-        imageUrl:
-          "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-        author: "Sam Green",
+        imageUrl: "https://images.unsplash.com/photo-1560523159-94c9d18bcf27",
+        author: "Vo Van Thanh Binh",
         date: "Feb 12, 2020",
         readTime: "11 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Boost your confidence with these tried-and-tested tips for speaking English fluently.",
+          "Ever feel misunderstood due to pronunciation? Perfecting English sounds is key to clear and impactful speaking.",
       },
 
       {
-        title: "Speaking Confidently",
+        title: "Speaking Strategies: Beyond Basic Conversation",
         slug: "mastering-grammar-basics",
         category: "Case Study",
-        imageUrl:
-          "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-        author: "Sam Green",
+        imageUrl: "https://images.unsplash.com/photo-1560439513-74b037a25d84",
+        author: "Vo Van Thanh Binh",
         date: "Feb 12, 2020",
         readTime: "11 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Boost your confidence with these tried-and-tested tips for speaking English fluently.",
+          "This guide delves into advanced speaking strategies. Explore how to structure your thoughts, organize your ideas, and use transitions for smooth flow.",
       },
       // Add more speaking posts here
     ],
@@ -159,7 +158,7 @@ const categories = [
         category: "Guide",
         imageUrl:
           "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
-        author: "Alex Blue",
+        author: "Vo Van Thanh Binh",
         date: "Apr 18, 2020",
         readTime: "8 min read",
         authorImage: "/Logo_Fanti.jpeg",
@@ -168,31 +167,32 @@ const categories = [
       },
 
       {
-        title: "Writing Tips for ESL Students",
+        title:
+          "Captivating Content: Mastering the Art of Storytelling in Writing",
         slug: "mastering-grammar-basics",
         category: "Guide",
         imageUrl:
-          "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
-        author: "Alex Blue",
+          "https://images.unsplash.com/photo-1455390582262-044cdead277a",
+        author: "Vo Van Thanh Binh",
         date: "Apr 18, 2020",
         readTime: "8 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Learn essential tips to improve clarity and coherence in your English writing.",
+          "Writing goes beyond just conveying information. It's about captivating readers and engaging their emotions. This guide explores the power of storytelling in writing.",
       },
 
       {
-        title: "Writing Tips for ESL Students",
+        title: "Grammar Guru: Essential Tips for Error-Free Writing",
         slug: "mastering-grammar-basics",
         category: "Guide",
         imageUrl:
-          "https://images.unsplash.com/photo-1434030216411-0b793f4b4173",
-        author: "Alex Blue",
+          "https://images.unsplash.com/photo-1456324504439-367cee3b3c32",
+        author: "Vo Van Thanh Binh",
         date: "Apr 18, 2020",
         readTime: "8 min read",
         authorImage: "/Logo_Fanti.jpeg",
         content:
-          "Learn essential tips to improve clarity and coherence in your English writing.",
+          "Explore common grammar pitfalls, learn techniques for self-editing, and discover resources for further grammar mastery. With practice, you'll write with confidence and clarity.",
       },
       // Add more writing posts here
     ],

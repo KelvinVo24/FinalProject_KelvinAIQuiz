@@ -4,7 +4,13 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Send } from "lucide-react";
+import {
+  BookOpen,
+  BotMessageSquare,
+  Loader2,
+  Send,
+  Upload,
+} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -32,27 +38,56 @@ const PdfChat = () => {
     {
       fileName: "TopNotch1_Vocabulary_2.pdf",
       displayName: "Top Notch 1 Vocabulary",
+      category: "Vocabulary",
     },
     {
       fileName: "TopNotch2_Vocabulary.pdf",
       displayName: "Top Notch 2 Vocabulary",
+      category: "Vocabulary",
     },
     {
       fileName: "TopNotch3_Vocabulary.pdf",
       displayName: "Top Notch 3 Vocabulary",
+      category: "Vocabulary",
     },
-    { fileName: "Summit1_Vocabulary.pdf", displayName: "Summit 1 Vocabulary" },
-    { fileName: "Fundamentals_book.pdf", displayName: "Fundamentals Book" },
-    { fileName: "TopNotch1_book.pdf", displayName: "Top Notch 1 Book" },
-    { fileName: "TopNotch2_book.pdf", displayName: "Top Notch 2 Book" },
-    { fileName: "TopNotch3_book.pdf", displayName: "Top Notch 3 Book" },
-    { fileName: "Summit1_book.pdf", displayName: "Summit 1 Book" },
+    {
+      fileName: "Summit1_Vocabulary.pdf",
+      displayName: "Summit 1 Vocabulary",
+      category: "Vocabulary",
+    },
+    {
+      fileName: "Fundamentals_book.pdf",
+      displayName: "Fundamentals Book",
+      category: "Books",
+    },
+    {
+      fileName: "TopNotch1_book.pdf",
+      displayName: "Top Notch 1 Book",
+      category: "Books",
+    },
+    {
+      fileName: "TopNotch2_book.pdf",
+      displayName: "Top Notch 2 Book",
+      category: "Books",
+    },
+    {
+      fileName: "TopNotch3_book.pdf",
+      displayName: "Top Notch 3 Book",
+      category: "Books",
+    },
+    {
+      fileName: "Summit1_book.pdf",
+      displayName: "Summit 1 Book",
+      category: "Books",
+    },
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!question || (!uploadedFile && !selectedPdf)) {
-      setError("Please upload a file or select a PDF and enter a question.");
+      setError(
+        "Please select your material or upload a file and enter a question."
+      );
       return;
     }
 
@@ -108,75 +143,103 @@ const PdfChat = () => {
     }
   };
 
+  const groupedPdfs = pdfFiles.reduce((acc, pdf) => {
+    if (!acc[pdf.category]) {
+      acc[pdf.category] = [];
+    }
+    acc[pdf.category].push(pdf);
+    return acc;
+  }, {} as Record<string, typeof pdfFiles>);
+
   return (
-    <Card className="w-full max-w-4xl mx-auto">
-      <CardHeader>
-        <CardTitle>BTEC ESL - AI Chatbot Assistant</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {/* Select pre-saved PDF */}
-          <div className="flex items-center gap-4">
-            <Select value={selectedPdf} onValueChange={setSelectedPdf}>
-              <SelectTrigger className="w-[300px]">
-                <SelectValue placeholder="Select Pearson Level" />
-              </SelectTrigger>
-              <SelectContent>
-                {pdfFiles.map((pdf) => (
-                  <SelectItem key={pdf.fileName} value={pdf.fileName}>
-                    {pdf.displayName}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 sm:p-6 md:p-8 rounded-lg">
+      <Card className="w-full max-w-4xl mx-auto shadow-xl border-0">
+        <CardHeader className="space-y-1 pb-4 border-b">
+          <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            BTEC ESL Assistant
+          </CardTitle>
+          <p className="text-sm text-gray-500">
+            Ask questions about your ESL materials
+          </p>
+        </CardHeader>
+
+        <CardContent className="space-y-6 pt-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                Select Material
+              </label>
+              <Select value={selectedPdf} onValueChange={setSelectedPdf}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Choose your learning material" />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(groupedPdfs).map(([category, pdfs]) => (
+                    <div key={category}>
+                      <div className="px-2 py-1.5 text-sm font-semibold text-gray-500">
+                        {category}
+                      </div>
+                      {pdfs.map((pdf) => (
+                        <SelectItem
+                          key={pdf.fileName}
+                          value={pdf.fileName}
+                          className="pl-4"
+                        >
+                          <span className="flex items-center gap-2">
+                            <BookOpen className="w-4 h-4" />
+                            {pdf.displayName}
+                          </span>
+                        </SelectItem>
+                      ))}
+                    </div>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">
+                Or Upload Your Own
+              </label>
+              <div className="flex items-center gap-4">
+                <label htmlFor="file-upload" className="flex-1 cursor-pointer">
+                  <div className="w-full border-2 border-dashed border-gray-300 rounded-lg px-4 py-2.5 hover:border-blue-500 transition-colors duration-200 flex items-center justify-center gap-2">
+                    <Upload className="w-4 h-4 text-gray-500" />
+                    <span className="text-sm text-gray-600">
+                      {uploadedFile ? uploadedFile.name : "Upload PDF"}
+                    </span>
+                  </div>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    accept=".pdf"
+                    onChange={(e) =>
+                      setUploadedFile(e.target.files?.[0] || null)
+                    }
+                    className="sr-only"
+                  />
+                </label>
+              </div>
+            </div>
           </div>
 
-          {/* File upload */}
-          <div className="flex items-center gap-4">
-            <label
-              htmlFor="file-upload"
-              className="relative cursor-pointer bg-blue-500 text-white rounded-md font-medium hover:bg-blue-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 transition duration-200 px-4 py-2 flex items-center gap-2"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-              Upload PDF
-              <input
-                id="file-upload"
-                type="file"
-                accept=".pdf"
-                onChange={(e) => setUploadedFile(e.target.files?.[0] || null)}
-                className="sr-only"
-              />
-            </label>
-            {uploadedFile && (
-              <span className="text-gray-700 text-sm truncate max-w-[200px]">
-                {uploadedFile.name}
-              </span>
-            )}
-          </div>
-
-          {/* Question input and submit */}
-          <form onSubmit={handleSubmit} className="flex gap-2">
+          <form onSubmit={handleSubmit} className="flex gap-4">
             <Input
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Ask a question about the lesson..."
-              className="flex-1"
+              placeholder="What would you like to know about the material?"
+              className="pr-24"
             />
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Loading..." : <Send className="w-5 h-5" />}
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500"
+            >
+              {isLoading ? (
+                "Loading..."
+              ) : (
+                <BotMessageSquare className="w-5 h-5" />
+              )}
             </Button>
           </form>
 
@@ -189,13 +252,15 @@ const PdfChat = () => {
 
           {/* Answer display */}
           {answer && (
-            <div className="p-4 bg-gray-100 rounded-lg">
-              <p className="text-gray-800 whitespace-pre-wrap">{answer}</p>
+            <div className="p-4 bg-white rounded-lg shadow-sm border">
+              <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
+                {answer}
+              </p>
             </div>
           )}
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
